@@ -389,6 +389,10 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                         {
                             posOffset = -posOffset - valueTextWidth
                             negOffset = -negOffset - valueTextWidth
+                            
+                        } else {
+                            
+                            posOffset = -rect.size.width + 5
                         }
                         
                         if dataSet.isDrawValuesEnabled
@@ -557,7 +561,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                                 }
                                 
                                 let drawBelow = (val == 0.0 && negY == 0.0 && posY > 0.0) || val < 0.0
-
+                                
                                 let x = transformed[k].x + (drawBelow ? negOffset : posOffset)
                                 let y = rect.origin.y + rect.size.height / 2.0
                                 
@@ -579,12 +583,12 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                                 if dataSet.isDrawValuesEnabled
                                 {
                                     drawValue(context: context,
-                                        value: valueText,
-                                        xPos: x,
-                                        yPos: y + yOffset,
-                                        font: valueFont,
-                                        align: textAlign,
-                                        color: dataSet.valueTextColorAt(index))
+                                              value: valueText,
+                                              xPos: x,
+                                              yPos: y + yOffset,
+                                              font: valueFont,
+                                              align: textAlign,
+                                              color: dataSet.valueTextColorAt(index))
                                 }
                                 
                                 if let icon = e.icon, dataSet.isDrawIconsEnabled
@@ -619,3 +623,4 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         high.setDraw(x: barRect.midY, y: barRect.origin.x + barRect.size.width)
     }
 }
+
