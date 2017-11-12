@@ -382,17 +382,15 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                         
                         // calculate the correct offset depending on the draw position of the value
                         let valueTextWidth = valueText.size(withAttributes: [NSAttributedStringKey.font: valueFont]).width
-                        posOffset = (drawValueAboveBar ? valueOffsetPlus : -(valueTextWidth + valueOffsetPlus))
+                        posOffset = (drawValueAboveBar ? (-rect.size.width + 5) : 5)
                         negOffset = (drawValueAboveBar ? -(valueTextWidth + valueOffsetPlus) : valueOffsetPlus)
                         
                         if isInverted
                         {
-                            posOffset = -posOffset - valueTextWidth
+                            
+                            posOffset = -rect.size.width - valueTextWidth - 5
                             negOffset = -negOffset - valueTextWidth
                             
-                        } else {
-                            
-                            posOffset = -rect.size.width + 5
                         }
                         
                         if dataSet.isDrawValuesEnabled
