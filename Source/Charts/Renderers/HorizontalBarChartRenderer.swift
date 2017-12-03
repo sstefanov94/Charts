@@ -388,7 +388,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                         if isInverted
                         {
                             
-                            posOffset = -rect.size.width - valueTextWidth - 5
+                            posOffset = -rect.size.width - valueTextWidth - 10
                             negOffset = -negOffset - valueTextWidth
                             
                         }
